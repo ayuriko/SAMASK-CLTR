@@ -21,10 +21,11 @@ warnings.filterwarnings("ignore")
 
 num_class = 2
 
+root_dir = '/mnt/gemlab_data/User_database/xupeirong/data_for_use'
 
 # 设定数据集路径
-data_dir = '/mnt/r/All_data_clear/DATA'
-mask_dir = '/mnt/r/All_data_clear/MASK'
+data_dir = os.path.join(root_dir, 'test_model_nrrd')
+mask_dir = os.path.join(root_dir, 'test_model_mask')
 # 定义训练、测试、验证集的路径
 train_dir = os.path.join(data_dir, 'train')
 
