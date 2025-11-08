@@ -247,7 +247,7 @@ def train(tra_loader,optimizer,loss_fn,epochs):
         print(f"epoch: {epoch+1} loss: {train_loss_sum/ iter:.4f} "
                       f"train_accuracy: {train_currect_num/ train_total_num:.3f} "    
                       f"valid_accuracy: {valid_acc:.3f}, Validation AUC: {valid_auc:.3f}")
-        result_path =( "/mnt/r/3D_ABUS_code/MASK-Deformable-detr-classification-head-modify-data-all/results")
+        result_path = os.path.join(os.path.dirname(__file__), "results")
 
         if not os.path.exists(result_path):
             os.makedirs(result_path)
@@ -260,11 +260,10 @@ def train(tra_loader,optimizer,loss_fn,epochs):
             print('Validation AUC increased ({:.6f} --> {:.6f}).  Saving model ...'.format(valid_auc_max, valid_auc))
             valid_auc_max = valid_auc
             torch.save(detr_model.state_dict(),
-                       '/mnt/r/3D_ABUS_code/MASK-Deformable-detr-classification-head-modify-data-all/best_auc_checkpoint.pth')
+                       os.path.join(os.path.dirname(__file__), "best_auc_checkpoint.pth"))
         else:
             torch.save(detr_model.state_dict(),
-                       '/mnt/r/3D_ABUS_code/MASK-Deformable-detr-classification-head-modify-data-all/the_lastest_checkpoint.pth')
-
+                       os.path.join(os.path.dirname(__file__), "the_lastest_checkpoint.pth"))
     print("-------------------finish_training----------------------")
 
 
