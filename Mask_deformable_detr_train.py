@@ -207,6 +207,7 @@ valid_loader=DataLoader(dataset=val_ds,shuffle=True,batch_size=2,num_workers=14,
     
 def train(tra_loader,optimizer,loss_fn,epochs):
     val_loss_min = np.inf  # track change in minimum validation loss
+    valid_auc_max = 0.0
     train_loss_list = []
     val_loss_list = []
     train_acc_list = []
